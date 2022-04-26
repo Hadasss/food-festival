@@ -228,4 +228,17 @@
       </div>
     </footer>
   </body>
+  <script>
+    (function () {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          // It's important to use ./ in front of service-worker.js. with absolute path, this configuration would break on the deployed application.
+          .register("./service-worker.js")
+          .then(() => console.log("Service worker registered successfully."))
+          .catch((err) =>
+            console.log("Service worker registration failed", err)
+          );
+      }
+    })();
+  </script>
 </html>
